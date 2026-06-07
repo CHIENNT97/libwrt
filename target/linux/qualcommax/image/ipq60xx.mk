@@ -440,3 +440,16 @@ define Device/jdcloud_re-cs-07
 	IMAGE/factory.bin := append-kernel | pad-to $$(KERNEL_SIZE) | append-rootfs | append-metadata
 endef
 TARGET_DEVICES += jdcloud_re-cs-07
+
+define Device/smwave_srs821
+	$(call Device/FitImage)
+	$(call Device/UbiFit)
+	DEVICE_VENDOR := SMWave
+	DEVICE_MODEL := SRS821
+	SOC := ipq6000
+	BLOCKSIZE := 128k
+	PAGESIZE := 2048
+	DEVICE_DTS_CONFIG := config@cp01-c1
+	DEVICE_PACKAGES := ipq-wifi-jdcloud_re-ss-01
+endef
+TARGET_DEVICES += smwave_srs821
